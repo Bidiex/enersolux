@@ -281,10 +281,12 @@ button {
     line-height: 2.1rem;
 }
 
+
 .whatsapp-fixed__btn{
-  top: 90%;
-  left: 85%;
+  right: 20px;
+  bottom: 20px;
   position: fixed;
+  cursor: pointer;
   background: rgb(19, 183, 19);
   color: white;
   width: 50px;
