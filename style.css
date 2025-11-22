@@ -307,6 +307,36 @@ button {
     margin-left: calc(50% - 50vw);
 }
 
+.type-services-btns-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.type-services__btn {
+    color: var(--fourth-color);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 1.5rem;
+    padding-inline: 1.5rem;
+    padding-block: 0.5rem;
+    border: 1px solid var(--secondary-color);
+    transition: all 0.3s ease;
+}
+
+.type-services__btn:hover {
+    transform: scale(1.01) translateY(-3px);
+    background: var(--fourth-color);
+    border: 1px solid var(--fourth-color);
+    color: white;
+}
+
+.type-services__btn.selected {
+    background: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    color: white;
+}
+
 .services-container {
     width: 100%;
     display: flex;
@@ -327,6 +357,7 @@ button {
     text-align: left;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 1rem;
     scroll-snap-align: start;
     background: var(--secondary-color);
@@ -335,15 +366,22 @@ button {
     box-shadow: 0 0 8px rgb(211, 211, 211);
 }
 
-.service__card__title{
+.service__card__title {
     color: white;
 }
 
-.service__card__paragrah{
+.service__card__paragrah {
     color: white;
 }
 
-.service__btn{
+.card-img {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.service__btn {
+    width: 50%;
     cursor: pointer;
     border-radius: 1.5rem;
     padding-block: 0.5rem;
@@ -353,18 +391,55 @@ button {
     transition: all 0.2s ease;
 }
 
-.service__btn:hover{
-    transform: scale(1.01);
+.service__btn:hover {
+    transform: scale(1.01) translateY(-3px);
     background: var(--fifth-color);
 }
 
-.servicie__seemore{
+.servicie__seemore {
+    border-top: 1px solid white;
+    padding-top: 1rem;
     text-align: center;
     color: white;
 }
 
-.servicie__seemore:hover{
+.servicie__seemore:hover {
     color: var(--fifth-color);
+}
+
+.faq-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq {
+    width: 100%;
+    text-align: left;
+}
+
+.faq button {
+    cursor: pointer;
+    color: var(--secondary-color);
+    width: 100%;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.faq i {
+    display: inline-block;
+    transform-origin: center;
+    color: var(--secondary-color);
+    transition: all 0.3s ease;
+}
+
+.faq i.open {
+    transform: rotate(90deg);
 }
 
 .whatsapp-fixed__btn {
@@ -398,7 +473,7 @@ button {
 
 .footet-container {
     border-radius: 1rem 1rem 0 0;
-    background: white;
+    background: var(--fourth-color);
     width: 100%;
     max-width: var(--max-width);
     min-width: var(--min-width);
@@ -410,7 +485,8 @@ button {
 }
 
 .footer__brand img {
-    width: 80px;
+    color: white;
+    width: 120px;
 }
 
 .footer__content {
@@ -425,37 +501,38 @@ button {
 }
 
 .footer__links a {
-    color: var(--paragraph-color);
+    color: white;
     font-size: 0.9rem;
     transition: all 0.3s ease;
 }
 
 .footer__links a:hover {
-    color: var(--secondary-color);
+    color: var(--primary-color);
     transform: translateY(-3px);
 }
 
 .footer__socials {
+    color: white;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
 .footer__socials a {
-    color: var(--secondary-color);
+    color: var(--primary-color);
     font-size: 1.5rem;
     transition: all 0.3s ease;
 }
 
 .footer__socials a:hover {
-    color: var(--paragraph-color);
+    color: var(--fifth-color);
     transform: translateY(-3px);
 }
 
 .footer p {
     padding-top: 1rem;
     font-size: 0.8rem;
-    color: var(--paragraph-color);
+    color: white;
 }
 
 /* Oculto */
@@ -535,7 +612,7 @@ button {
         text-align: left;
     }
 
-    .section-services{
+    .section-services {
         width: 100%;
         margin: 0;
     }
@@ -546,6 +623,10 @@ button {
 
     .whatsapp-fixed__btn {
         display: none;
+    }
+
+    .faq-container {
+        width: 70%;
     }
 
     .footer__content {

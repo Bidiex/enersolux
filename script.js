@@ -64,6 +64,52 @@ window.addEventListener('scroll', () => {
     }
 });
 
+//Logica faq acordeon
+const faqItems = document.querySelectorAll('.faq');
+
+faqItems.forEach(faq => {
+    const btn = faq.querySelector('button');
+    const answer = faq.querySelector(".faq-answer");
+    const icon = faq.querySelector('i');
+
+    btn.addEventListener('click', () =>{
+
+        faqItems.forEach(otherFaq => {
+            if(otherFaq !== faq){
+                otherFaq.querySelector(".faq-answer").classList.add("oculto");
+                otherFaq.querySelector("i").classList.remove("open");
+            }
+        });
+
+        answer.classList.toggle("oculto");
+        icon.classList.toggle("open");
+    });
+});
+
+//Logica tipos de servicios
+const industryServicesBtn = document.getElementById("industry-services__btn");
+const homeServicesBtn = document.getElementById("home-services__btn");
+
+const industryServicesContainer = document.getElementById("industry-services-container");
+const homeServicesContainer = document.getElementById("home-services-container");
+
+industryServicesBtn.addEventListener('click', () => {
+    industryServicesBtn.classList.add("selected");
+    industryServicesContainer.classList.remove("oculto");
+
+    homeServicesBtn.classList.remove("selected");
+    homeServicesContainer.classList.add("oculto");
+});
+
+homeServicesBtn.addEventListener('click', () => {
+    homeServicesBtn.classList.add("selected");
+    homeServicesContainer.classList.remove("oculto");
+
+    industryServicesBtn.classList.remove("selected");
+    industryServicesContainer.classList.add("oculto");
+});
+
+
 //Lógica contacto por Whatsapp
 document.getElementById("contact-btn").addEventListener("click", function () {
     let phoneNumber = "573180779665"
