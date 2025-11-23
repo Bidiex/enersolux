@@ -72,10 +72,10 @@ faqItems.forEach(faq => {
     const answer = faq.querySelector(".faq-answer");
     const icon = faq.querySelector('i');
 
-    btn.addEventListener('click', () =>{
+    btn.addEventListener('click', () => {
 
         faqItems.forEach(otherFaq => {
-            if(otherFaq !== faq){
+            if (otherFaq !== faq) {
                 otherFaq.querySelector(".faq-answer").classList.add("oculto");
                 otherFaq.querySelector("i").classList.remove("open");
             }
@@ -87,6 +87,10 @@ faqItems.forEach(faq => {
 });
 
 //Logica tipos de servicios
+const servicesTitle = document.getElementById("services-title");
+
+servicesTitle.innerText = "Soluciones comerciales";
+
 const industryServicesBtn = document.getElementById("industry-services__btn");
 const homeServicesBtn = document.getElementById("home-services__btn");
 
@@ -94,6 +98,8 @@ const industryServicesContainer = document.getElementById("industry-services-con
 const homeServicesContainer = document.getElementById("home-services-container");
 
 industryServicesBtn.addEventListener('click', () => {
+    servicesTitle.innerText = "Soluciones comerciales";
+
     industryServicesBtn.classList.add("selected");
     industryServicesContainer.classList.remove("oculto");
 
@@ -102,12 +108,41 @@ industryServicesBtn.addEventListener('click', () => {
 });
 
 homeServicesBtn.addEventListener('click', () => {
+    servicesTitle.innerText = "Soluciones residenciales";
+
     homeServicesBtn.classList.add("selected");
     homeServicesContainer.classList.remove("oculto");
 
     industryServicesBtn.classList.remove("selected");
     industryServicesContainer.classList.add("oculto");
 });
+
+//Logica card details
+const seeMoreLinks = document.querySelectorAll('.servicie__seemore');
+const seeLessLinks = document.querySelectorAll('.servicie__seeless');
+
+seeMoreLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const card = link.closest('.service__card');
+    const details = card.querySelector('.service-details-container');
+
+    details.classList.remove('hide');
+    details.classList.add('show');
+  });
+});
+
+seeLessLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const card = link.closest('.service__card');
+    const details = card.querySelector('.service-details-container');
+
+    details.classList.remove('show');
+    details.classList.add('hide');
+  });
+});
+
 
 
 //Lógica contacto por Whatsapp
