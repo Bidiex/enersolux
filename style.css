@@ -467,7 +467,7 @@ button {
         opacity: 1;
     }
     to {
-        transform: translateY(50%);
+        transform: translateY(100%);
         opacity: 0;
     }
 }
@@ -521,6 +521,7 @@ button {
 }
 
 .whatsapp-fixed__btn {
+    z-index: 999;
     right: 20px;
     bottom: 20px;
     position: fixed;
@@ -569,7 +570,8 @@ button {
 
 .footer__content {
     display: flex;
-    gap: 4rem;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .footer__links {

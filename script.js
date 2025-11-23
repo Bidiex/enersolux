@@ -122,25 +122,25 @@ const seeMoreLinks = document.querySelectorAll('.servicie__seemore');
 const seeLessLinks = document.querySelectorAll('.servicie__seeless');
 
 seeMoreLinks.forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const card = link.closest('.service__card');
-    const details = card.querySelector('.service-details-container');
-
-    details.classList.remove('hide');
-    details.classList.add('show');
-  });
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        const card = link.closest('.service__card');
+        const details = card.querySelector('.service-details-container');
+        details.classList.remove("oculto")
+        details.classList.remove('hide');
+        details.classList.add('show');
+    });
 });
 
 seeLessLinks.forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const card = link.closest('.service__card');
-    const details = card.querySelector('.service-details-container');
-
-    details.classList.remove('show');
-    details.classList.add('hide');
-  });
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        const card = link.closest('.service__card');
+        const details = card.querySelector('.service-details-container');
+        details.classList.remove('show');
+        details.classList.add('hide');
+        details.classList.add("oculto")
+    });
 });
 
 
