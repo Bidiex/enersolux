@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 /* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Poppins;
+    font-family: PT Sans;
 }
 
 :root {
@@ -140,6 +140,7 @@ button {
 }
 
 .navbar__link a {
+    font-size: 2rem;
     display: block;
     color: var(--fourth-color);
     font-weight: bold;
@@ -156,6 +157,7 @@ button {
     cursor: pointer;
     padding: 0.5rem 2rem;
     color: var(--paragraph-color);
+    font-size: 1rem;
     font-weight: bold;
     background: var(--primary-color);
     transition: all 0.3s ease;
@@ -184,7 +186,7 @@ button {
 
 .hero-wrapper {
     width: 100%;
-    background-image: url(assets/hero-background.jpg);
+    background-image: url(assets/hero-background.webp);
     background-position: center;
     background-size: cover;
     mask-image: linear-gradient(black 80%, transparent);
@@ -502,7 +504,7 @@ button {
     color: var(--secondary-color);
     width: 100%;
     text-align: left;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
     padding-bottom: 0.5rem;
@@ -651,6 +653,10 @@ button {
         align-items: center;
         font-size: 1rem;
         flex-direction: row;
+    }
+
+    .navbar__link a{
+        font-size: 1rem;
     }
 
     .navbar__link a.scrolled {
