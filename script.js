@@ -143,8 +143,6 @@ seeLessLinks.forEach(link => {
     });
 });
 
-
-
 //Lógica contacto por Whatsapp
 document.getElementById("contact-btn").addEventListener("click", function () {
     let phoneNumber = "573180779665"
