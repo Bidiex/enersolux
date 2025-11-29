@@ -144,26 +144,26 @@ seeLessLinks.forEach(link => {
 });
 
 //Lógica contacto por Whatsapp
-document.getElementById("contact-btn").addEventListener("click", function () {
-    let phoneNumber = "573180779665"
-    let message = "¡Hola!, quisiera cotizar con ustedes"
-    let url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+// document.getElementById("contact-btn").addEventListener("click", function () {
+//     let phoneNumber = "573180779665"
+//     let message = "¡Hola!, quisiera cotizar con ustedes"
+//     let url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
 
-    window.open(url, "_blank");
-});
+//     window.open(url, "_blank");
+// });
 
-document.getElementById("navbar__contact-btn").addEventListener("click", function () {
-    let phoneNumber = "573180779665"
-    let message = "¡Hola!, quisiera cotizar con ustedes"
-    let url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+// document.getElementById("navbar__contact-btn").addEventListener("click", function () {
+//     let phoneNumber = "573180779665"
+//     let message = "¡Hola!, quisiera cotizar con ustedes"
+//     let url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
 
-    window.open(url, "_blank");
-});
+//     window.open(url, "_blank");
+// });
 
-document.getElementById("contact-btn-2").addEventListener("click", function () {
-    let phoneNumber = "573180779665"
-    let message = "¡Hola!, quisiera cotizar con ustedes"
-    let url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+// document.getElementById("contact-btn-2").addEventListener("click", function () {
+//     let phoneNumber = "573180779665"
+//     let message = "¡Hola!, quisiera cotizar con ustedes"
+//     let url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
 
-    window.open(url, "_blank");
-});
+//     window.open(url, "_blank");
+// });
