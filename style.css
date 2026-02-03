@@ -35,6 +35,12 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+html {
+    scroll-padding-top: 5rem;
+    /* Offset for fixed header */
+    scroll-behavior: smooth;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -98,15 +104,22 @@ img {
 
 /* Header */
 .header {
-    position: sticky;
+    position: fixed;
+    /* Changed from sticky to fixed */
     top: 0;
+    left: 0;
     z-index: 50;
     width: 100%;
+    background-color: transparent;
+    /* Initially transparent */
+    transition: background-color 0.3s, border-bottom 0.3s, backdrop-filter 0.3s;
+    height: 5rem;
+}
+
+.header.scrolled {
     background-color: var(--secondary);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    height: 5rem;
-    /* h-20 */
 }
 
 .header__container {
@@ -268,18 +281,36 @@ img {
 /* Hero */
 .hero {
     position: relative;
-    min-height: 600px;
+    min-height: 90vh;
+    /* Increased from 600px */
     background-color: var(--secondary);
     display: flex;
     align-items: center;
     overflow: hidden;
+    padding-top: 5rem;
+    /* Mobile default offset */
+}
+
+@media (min-width: 1024px) {
+    .hero {
+        padding-top: 10rem;
+        /* Increased offset for desktop */
+    }
 }
 
 .hero__bg {
     position: absolute;
     inset: 0;
-    opacity: 0.4;
-    mix-blend-mode: overlay;
+    z-index: 0;
+}
+
+.hero__bg::after {
+    /* Optional: Slight dark overlay for text readability if needed, but removing green tint */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    /* Neutral dark overlay */
 }
 
 .hero__bg img {
