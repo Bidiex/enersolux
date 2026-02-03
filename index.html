@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enersolux S.A.S. | Mantenimiento Industrial y Energía Solar</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+</head>
+
+<body class="body">
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header__container">
+            <div class="header__brand">
+                <img src="assets/logo-footer.svg" alt="Enersolux" class="header__logo-img">
+            </div>
+
+            <nav class="nav" id="navMenu">
+                <a href="#servicios" class="nav__link">Servicios</a>
+                <a href="#compromiso" class="nav__link">Compromiso</a>
+                <a href="#faq" class="nav__link">FAQ</a>
+                <a href="#contacto" class="nav__link">Contacto</a>
+                <!-- Mobile Only CTA in Menu -->
+                <a href="#contacto" class="nav__cta-mobile">Solicitar Evaluación</a>
+            </nav>
+
+            <div class="header__actions">
+                <a href="#contacto" class="header__cta">Solicitar Evaluación</a>
+                <button class="header__toggle" id="navToggle" aria-label="Menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero__bg">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdkEXRm4blno9Qzy4QZQhzwAneFeU69WIEcw8Y5edqJNtvSA6DJIQCYd_XlZKjzdC2FVmcko2EVFWss2km3j3HTrWAjzxA2ab6XJcTYuSGxn-AyVqx0gnflyK_LZUvHiaMhrclgtXhlpi3jzw9iB2TYL-IkIFJgDPpPIHrRX8aHljayZiilVfOgM8gGkzlL5n7TIhGKUHMY0Y2OYeIRQFnKVGdefSRLvpsOJN7TUptcfnq5C-B9BqPCsqa9q-2fMQkTDmhwRGIPcp-"
+                    alt="Industrial and Solar Backdrop">
+            </div>
+            <div class="hero__container">
+                <div class="hero__content">
+                    <div class="hero__badge">
+                        <span>Excelencia Industrial</span>
+                    </div>
+                    <h1 class="hero__title">
+                        Servicios Integrales de <span class="text-primary"></span>Mantenimiento</span> y Energía Solar
+                    </h1>
+                    <p class="hero__description">
+                        Maximizando la vida útil de sus activos con respaldo técnico especializado, confiabilidad y
+                        máxima eficiencia operativa.
+                    </p>
+                    <div class="hero__buttons">
+                        <a href="#contacto" class="btn btn--accent">
+                            Solicitar Evaluación Técnica
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </a>
+                        <a href="#servicios" class="btn btn--outline">
+                            Ver Servicios
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Us Section -->
+        <section class="why-us">
+            <div class="why-us__container">
+                <div class="why-us__header">
+                    <h2 class="section-title">¿Por qué el mantenimiento es clave?</h2>
+                    <p class="section-desc">
+                        Prevenir fallos es asegurar la continuidad de su operación y la rentabilidad de su inversión. Un
+                        sistema sin mantenimiento especializado puede perder gran parte de su valor comercial y técnico.
+                    </p>
+                </div>
+
+                <div class="why-us__grid">
+                    <!-- Card 1 -->
+                    <div class="feature-card group">
+                        <span class="material-symbols-outlined feature-card__icon">trending_down</span>
+                        <h3 class="feature-card__title">Pérdida de Eficiencia</h3>
+                        <p class="feature-card__text">Evite el deterioro del rendimiento de sus equipos mediante
+                            calibración técnica de alta precisión.</p>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="feature-card group">
+                        <span class="material-symbols-outlined feature-card__icon">warning</span>
+                        <h3 class="feature-card__title">Fallas Inesperadas</h3>
+                        <p class="feature-card__text">Reduzca drásticamente los paros no programados que afectan su
+                            cadena de producción crítica.</p>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="feature-card group">
+                        <span class="material-symbols-outlined feature-card__icon">gpp_maybe</span>
+                        <h3 class="feature-card__title">Riesgos Operativos</h3>
+                        <p class="feature-card__text">Garantice la seguridad de su personal e instalaciones bajo los más
+                            altos estándares normativos.</p>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="feature-card group">
+                        <span class="material-symbols-outlined feature-card__icon">battery_charging_full</span>
+                        <h3 class="feature-card__title">Vida Útil</h3>
+                        <p class="feature-card__text">Prolongue la inversión de sus activos industriales y solares por
+                            periodos significativamente mayores.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="servicios">
+            <div class="services__container">
+                <div class="services__header">
+                    <h2 class="section-title">Nuestros Servicios Especializados</h2>
+                    <p class="section-desc">Soluciones de ingeniería diseñadas para la sostenibilidad y confiabilidad
+                        industrial.</p>
+                </div>
+
+                <div class="services__grid">
+                    <!-- Service 1 -->
+                    <article class="service-card group">
+                        <div class="service-card__image">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuACqJuE0SF0C-v-Qa3Vi9N655avGzHvEz49ewuXjyVPD_x23RQynb_yRPj6mzm9JxV6whiNmGfGD46MIoaqMx59ziZEuWTRRSn57oYQFhg7E7UuKDHbf88cjMc0JsjjLF_4Azj1wnvnNMxY0SMIlGce9aGLtjfgtRog7IhLlN-u4V2b6Gz66wXD2fZcbGz5XBsG_VtWlQTLHPq2fLQ0NNwGGHSJfe-GmwmxH_EHn2RgNA61AEajqEE_bL0iv8vi5O2pf0Na6V4he3nD"
+                                alt="Instrumentación y Control">
+                        </div>
+                        <div class="service-card__content">
+                            <div class="service-card__label">
+                                <span class="material-symbols-outlined">settings_input_component</span>
+                                <span>Ingeniería</span>
+                            </div>
+                            <h3 class="service-card__title">Instrumentación y Control</h3>
+                            <p class="service-card__desc">Mantenimiento preventivo, correctivo y suministro de equipos
+                                industriales de alta precisión. Automatización de procesos críticos.</p>
+                            <ul class="service-card__list">
+                                <li><span class="material-symbols-outlined">check_circle</span> Calibración Certificada
+                                </li>
+                                <li><span class="material-symbols-outlined">check_circle</span> Suministro de Repuestos
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Service 2 -->
+                    <article class="service-card service-card--featured group">
+                        <div class="service-card__image">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBHoHbyRWfl-2THrkTLalyxl54n1UMheQIbh8InlOHAEyu6msR_D0LJxktzALEyu31fAAln4i3tfNU1rk8e-oVrVd9waR684uPa42kyxuAAaA4m7Ri0-u1-5oGVfuH0jeRR4WPqO787iVq-imBi4rb3gDaJgMI5PHOtmC5eIkbGProb8aVgHmp6UUh8jwcAZC6P08GX0gP5fR1_yUvrw6b22ePIqURRhS8eA_BkPelg7SHtU0pdYrwPYw6-WghYDQBX6GXwr7KSyNO"
+                                alt="Sistemas Solares">
+                        </div>
+                        <div class="service-card__content">
+                            <div class="service-card__label">
+                                <span class="material-symbols-outlined">wb_sunny</span>
+                                <span>Energía Renovable</span>
+                            </div>
+                            <h3 class="service-card__title">Sistemas Solares Fotovoltaicos</h3>
+                            <p class="service-card__desc">Limpieza profesional de paneles, termografía y verificación
+                                eléctrica. El mantenimiento asegura su retorno de inversión.</p>
+                            <ul class="service-card__list">
+                                <li><span class="material-symbols-outlined">check_circle</span> Limpieza Técnica
+                                    Avanzada</li>
+                                <li><span class="material-symbols-outlined">check_circle</span> Diagnóstico Termográfico
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Service 3 -->
+                    <article class="service-card group">
+                        <div class="service-card__image">
+                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAqXxB8A2RNpgfAC60AUkbjM_7yfG0f1IsnqhiXY6JE5nP1JZY3x29aKGfu2trQy_2T-3QzWyKqWX-soc0bbFv6TmUPJsnuG_YI_HiKwHbGjq_zGAJgMVWBWgol6RoplzAC8qaypj2n58heZLSo-fMvY1XogsAUTRus2wxLFUEcCLZK3WYsdJ3owfz5oCNfJlqCzaLk6mZXSScCLIkU4Ts57O3Kg-jAdbrWRCKfS8RC95eONP8Jhc08ES-Kt3QPy92I8iEmYlWr6yO"
+                                alt="Mantenimientos Locativos">
+                        </div>
+                        <div class="service-card__content">
+                            <div class="service-card__label">
+                                <span class="material-symbols-outlined">home_repair_service</span>
+                                <span>Infraestructura</span>
+                            </div>
+                            <h3 class="service-card__title">Mantenimientos Locativos</h3>
+                            <p class="service-card__desc">Gestión integral de activos: obra civil, refrigeración
+                                industrial y adecuaciones eléctricas generales con altos estándares.</p>
+                            <ul class="service-card__list">
+                                <li><span class="material-symbols-outlined">check_circle</span> Obra Civil e Industrial
+                                </li>
+                                <li><span class="material-symbols-outlined">check_circle</span> Climatización Industrial
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Commitment Section -->
+        <section class="commitment" id="compromiso">
+            <div class="commitment__container">
+                <div class="commitment__content">
+                    <h2 class="commitment__title">Nuestro Compromiso con la Excelencia</h2>
+                    <div class="commitment__list">
+                        <div class="commitment__item">
+                            <div class="commitment__icon">
+                                <span class="material-symbols-outlined">health_and_safety</span>
+                            </div>
+                            <div>
+                                <h4 class="commitment__item-title">Seguridad ante todo</h4>
+                                <p class="commitment__item-desc">Cumplimos estrictamente con las normas de seguridad en
+                                    cada intervención técnica.</p>
+                            </div>
+                        </div>
+                        <div class="commitment__item">
+                            <div class="commitment__icon">
+                                <span class="material-symbols-outlined">verified</span>
+                            </div>
+                            <div>
+                                <h4 class="commitment__item-title">Respaldo Técnico</h4>
+                                <p class="commitment__item-desc">Personal altamente calificado y certificado por los
+                                    fabricantes líderes de la industria global.</p>
+                            </div>
+                        </div>
+                        <div class="commitment__item">
+                            <div class="commitment__icon">
+                                <span class="material-symbols-outlined">description</span>
+                            </div>
+                            <div>
+                                <h4 class="commitment__item-title">Documentación Transparente</h4>
+                                <p class="commitment__item-desc">Informes técnicos detallados, trazabilidad total de
+                                    repuestos y hojas de vida de equipos digitalizadas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="commitment__media">
+                    <div class="commitment__image-wrapper">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVFKLzY3AnUHDs6TFPgoab6gzOIww2zwGvPrDf-_1pbd3YZUfLioVjP9ZpJm-Dq8G1i_oBHqbb64_yWlCuScFC87yZ-ulZHmX2kfStwA2SeNiQU7oEVoslO0EaeBcgxJmukkDmIr8PLRq8Vu-IzFkzB-71C-qZBRD_beNo8nuB9zceK_fzGuwkynZPIGHuObUuOKqohlzldcMbbU_Is9Mbzfap5-egF59m6wOiYdq8-MN8eCCvLZqCceptzFu4QCio9dGzGJb5ISda"
+                            alt="Técnico trabajando">
+                        <div class="commitment__overlay"></div>
+                    </div>
+                    <div class="commitment__badge">
+                        <p class="commitment__badge-value">100%</p>
+                        <p class="commitment__badge-label">Calidad Certificada</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq" id="faq">
+            <div class="faq__container">
+                <div class="faq__header">
+                    <h2 class="section-title">Preguntas Frecuentes</h2>
+                    <div class="divider"></div>
+                </div>
+
+                <div class="faq__list">
+                    <div class="faq__item">
+                        <h4 class="faq__question">
+                            ¿Cuál es la frecuencia recomendada para el mantenimiento solar?
+                            <span class="material-symbols-outlined">add_circle</span>
+                        </h4>
+                        <div class="faq__answer">
+                            <p>Recomendamos una limpieza técnica cada 3 a 6 meses, dependiendo de la ubicación, y una
+                                verificación eléctrica anual completa para asegurar el rendimiento máximo.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <h4 class="faq__question">
+                            ¿Cómo garantizan la eficiencia después de un servicio?
+                            <span class="material-symbols-outlined">add_circle</span>
+                        </h4>
+                        <div class="faq__answer">
+                            <p>Utilizamos equipos de medición calibrados y realizamos pruebas de rendimiento antes y
+                                después de cada intervención, documentadas en un informe técnico formal.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <h4 class="faq__question">
+                            ¿Tienen cobertura a nivel nacional?
+                            <span class="material-symbols-outlined">add_circle</span>
+                        </h4>
+                        <div class="faq__answer">
+                            <p>Contamos con equipos técnicos estratégicamente ubicados para atender proyectos
+                                industriales en las principales zonas económicas y parques solares del país.</p>
+                        </div>
+                    </div>
+                    <div class="faq__item">
+                        <h4 class="faq__question">
+                            ¿Qué tipo de garantías ofrecen en sus servicios?
+                            <span class="material-symbols-outlined">add_circle</span>
+                        </h4>
+                        <div class="faq__answer">
+                            <p>Ofrecemos garantía extendida en mano de obra y respaldamos los componentes instalados
+                                según las políticas de los fabricantes, asegurando total tranquilidad.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contacto">
+            <div class="contact__container">
+                <div class="contact__card">
+                    <div class="contact__info">
+                        <div>
+                            <h2 class="contact__title">Solicite una Evaluación</h2>
+                            <p class="contact__description">Estamos listos para potenciar la eficiencia de tus equipos.
+                                Déjanos tus datos y uno de nuestros expertos técnicos se contactará en menos de 24
+                                horas.</p>
+                            <ul class="contact__details">
+                                <li>
+                                    <span class="material-symbols-outlined">phone_in_talk</span>
+                                    <span>+57 315 629 0330</span>
+                                </li>
+                                <li>
+                                    <span class="material-symbols-outlined">mail</span>
+                                    <span>contacto@enersolux.com.co</span>
+                                </li>
+                                <li>
+                                    <span class="material-symbols-outlined">location_on</span>
+                                    <span>Barranquilla, Colombia</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="contact__form-wrapper">
+                        <form class="contact__form" id="contactForm">
+                            <div class="form__group">
+                                <label class="form__label">Nombre Completo</label>
+                                <input class="form__input" placeholder="Ej. Juan Pérez" type="text" id="name" required>
+                            </div>
+                            <div class="form__group">
+                                <label class="form__label">Teléfono</label>
+                                <input class="form__input" placeholder="Ej. 300 123 4567" type="tel" id="phone"
+                                    required>
+                            </div>
+                            <div class="form__group">
+                                <label class="form__label">Correo Electrónico</label>
+                                <input class="form__input" placeholder="juan@empresa.com" type="email" id="email"
+                                    required>
+                            </div>
+                            <div class="form__group form__group--full">
+                                <label class="form__label">Servicio de Interés</label>
+                                <select class="form__input" id="service" required>
+                                    <option value="" disabled selected>Seleccione...</option>
+                                    <option>Energía Solar Fotovoltaica</option>
+                                    <option>Instrumentación y Control</option>
+                                    <option>Mantenimiento Locativo</option>
+                                    <option>Otro Servicio</option>
+                                </select>
+                            </div>
+                            <div class="form__group form__group--full">
+                                <label class="form__label">Mensaje / Requerimiento</label>
+                                <textarea class="form__input" placeholder="Describa brevemente su necesidad..." rows="4"
+                                    id="description" required></textarea>
+                            </div>
+                            <div class="form__actions">
+                                <button class="btn btn--accent btn--full" type="submit">
+                                    Enviar Mensaje
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <div class="footer__logo">
+                        <img src="assets/logo-footer.svg" alt="Enersolux" class="footer__logo-img">
+                    </div>
+                    <p class="footer__desc">
+                        Líderes en soluciones integrales para el sector industrial y de energías renovables,
+                        comprometidos con la excelencia técnica.
+                    </p>
+                </div>
+
+                <div class="footer__links">
+                    <h4 class="footer__title">Navegación</h4>
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#compromiso">Compromiso</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>© 2026 Enersolux S.A.S. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="#" class="whatsapp-btn" id="whatsappFloat" aria-label="Contactar por WhatsApp">
+        <svg class="whatsapp-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z">
+            </path>
+        </svg>
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
