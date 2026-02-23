@@ -69,8 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (whatsappFloat) {
         whatsappFloat.addEventListener('click', (e) => {
             e.preventDefault();
-            // Use the number requested by user: 3156290330
-            const phone = '573156290330';
+            // Use the number requested by user: 3123174919
+            const phone = '573123174919';
             const text = encodeURIComponent('Hola Enersolux, estoy interesado en sus servicios.');
             window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
         });
@@ -159,7 +159,7 @@ function sendToWhatsapp() {
     const service = document.getElementById('service').value;
     const description = document.getElementById('description').value;
 
-    const phoneNumber = '573156290330';
+    const phoneNumber = '573123174919';
 
     const message = `*Solicitud de Contacto*
     
