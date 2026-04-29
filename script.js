@@ -55,50 +55,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // WhatsApp Form Logic
-    const contactForm = document.getElementById('contactForm');
+   const form = document.getElementById("contactForm");
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            sendToWhatsapp();
+form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const data = {
+        name: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        email: document.getElementById("email").value,
+        service: document.getElementById("service").value,
+        description: document.getElementById("description").value
+    };
+
+    const whatsappNumber = "573123174919";
+
+    const whatsappMessage = `Hola, mi nombre es ${data.name}
+
+Teléfono: ${data.phone}
+Correo: ${data.email}
+Servicio de interés: ${data.service}
+
+Requerimiento:
+${data.description}`;
+
+    try {
+        await fetch("TU_URL_DE_APPS_SCRIPT_AQUI", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
         });
+
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+        window.open(whatsappURL, "_blank");
+
+        form.reset();
+
+    } catch (error) {
+        console.error(error);
+        alert("Ocurrió un error al enviar el formulario.");
     }
-
-    // WhatsApp Floating Button
-    const whatsappFloat = document.getElementById('whatsappFloat');
-    if (whatsappFloat) {
-        whatsappFloat.addEventListener('click', (e) => {
-            e.preventDefault();
-            // Use the number requested by user: 3123174919
-            const phone = '573123174919';
-            const text = encodeURIComponent('Hola Enersolux, estoy interesado en sus servicios.');
-            window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
-        });
-    }
-    // GSAP Animations
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Hero
-        const tl = gsap.timeline();
-        tl.from('.hero__content', { y: 30, opacity: 0, duration: 1, ease: 'power3.out' })
-            .from('.hero__bg', { scale: 1.1, duration: 1.5, ease: 'power2.out' }, '-=1');
-
-        // Why Us Cards (Individual Triggers)
-        const featureCards = document.querySelectorAll('.feature-card');
-        featureCards.forEach((card, index) => {
-            gsap.from(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top 85%',
-                },
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-                delay: 0.1,
-                ease: 'power3.out'
-            });
-        });
+});
 
         // Services (Individual Triggers)
         const serviceCards = document.querySelectorAll('.service-card');
