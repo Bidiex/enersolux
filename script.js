@@ -100,6 +100,21 @@ ${data.description}`;
     }
 });
 
+    try {
+    const response = await fetch("TU_URL", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+
+    console.log(response);
+
+} catch (error) {
+    console.error("ERROR REAL:", error);
+}
+
         // Services (Individual Triggers)
         const serviceCards = document.querySelectorAll('.service-card');
         serviceCards.forEach((card, index) => {
