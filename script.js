@@ -80,7 +80,7 @@ Requerimiento:
 ${data.description}`;
 
     try {
-        await fetch("TU_URL_DE_APPS_SCRIPT_AQUI", {
+        await fetch("https://script.google.com/macros/s/AKfycbz09DK2DOCmMuzY9d1R-8U5RLBs3xsYd2u-TnoLvJxII1TyIoeq3l-6xFvkS1CTKRS8iQ/exec", {
             method: "POST",
             body: JSON.stringify(data),
             headers: {
