@@ -114,7 +114,7 @@ ${data.description}`;
     const whatsappFloat = document.getElementById("whatsappFloat");
 
 whatsappFloat.addEventListener("click", function(){
-  window.open("https://wa.me/${whatsappNumber}?text=Hola", "_blank")
+  window.open("https://wa.me/573123174919?text=Hola", "_blank")
 });
 
     // GSAP Animations - Services
