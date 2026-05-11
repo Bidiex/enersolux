@@ -111,6 +111,12 @@ ${data.description}`;
         });
     }
 
+    const whatsappFloat = document.getElementById("whatsappFloat");
+
+whatsappFloat.addEventListener("click", function(){
+  window.open("https://wa.me/${whatsappNumber}?text=Hola", "_blank")
+});
+
     // GSAP Animations - Services
     const serviceCards = document.querySelectorAll(".service-card");
 
