@@ -104,7 +104,7 @@ ${data.description}`;
                 formData.append("description", data.description);
 
                 const response = await fetch(
-                    "https://script.google.com/macros/s/AKfycbyOxU74Is8lVX90FgnqbwK7hpr2uMNIPS1VsNekr4SZv3-cZBDitujC2_3z6D32jTtC9A/exec",
+                    "https://script.google.com/macros/s/AKfycbx2bcvTqpQu3qQFAbJyrYw3j54Hchj79slDxqBjii072jUoFr3CtPwDLV312t41vJmz/exec",
                     {
                         method: "POST",
                         body: formData
