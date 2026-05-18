@@ -86,18 +86,24 @@ Requerimiento:
 ${data.description}`;
 
             try {
+                // Enviar a Google Sheets usando form-urlencoded
+                const formData = new URLSearchParams();
+
+                formData.append("name", data.name);
+                formData.append("phone", data.phone);
+                formData.append("email", data.email);
+                formData.append("service", data.service);
+                formData.append("description", data.description);
+
                 await fetch(
                     "https://script.google.com/macros/s/AKfycbz09DK2DOCmMuzY9d1R-8U5RLBs3xsYd2u-TnoLvJxII1TyIoeq3l-6xFvkS1CTKRS8iQ/exec",
                     {
                         method: "POST",
-                        mode: "no-cors",
-                        body: JSON.stringify(data),
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
+                        body: formData
                     }
                 );
 
+                // Abrir WhatsApp después de guardar
                 const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
                 window.open(whatsappURL, "_blank");
@@ -111,11 +117,17 @@ ${data.description}`;
         });
     }
 
+    // WhatsApp Floating Button
     const whatsappFloat = document.getElementById("whatsappFloat");
 
-whatsappFloat.addEventListener("click", function(){
-  window.open("https://wa.me/573123174919?text=Hola", "_blank")
-});
+    if (whatsappFloat) {
+        whatsappFloat.addEventListener("click", function () {
+            window.open(
+                "https://wa.me/573123174919?text=Hola",
+                "_blank"
+            );
+        });
+    }
 
     // GSAP Animations - Services
     const serviceCards = document.querySelectorAll(".service-card");
@@ -155,7 +167,7 @@ whatsappFloat.addEventListener("click", function(){
         delay: 0.2
     });
 
-    // FAQ Animation (sin redeclarar faqItems)
+    // FAQ Animation
     faqItems.forEach(item => {
         gsap.from(item, {
             scrollTrigger: {
