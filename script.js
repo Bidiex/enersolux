@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    // =========================
     // Mobile Menu
+    // =========================
     const navToggle = document.getElementById("navToggle");
     const navMenu = document.getElementById("navMenu");
     const navLinks = document.querySelectorAll(".nav__link, .nav__cta-mobile");
@@ -16,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Close menu on link click
+    // Cerrar menú al hacer click
     navLinks.forEach(link => {
         link.addEventListener("click", () => {
             if (navMenu.classList.contains("nav--open")) {
@@ -29,7 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+
+    // =========================
     // FAQ Accordion
+    // =========================
     const faqItems = document.querySelectorAll(".faq__item");
 
     faqItems.forEach(item => {
@@ -59,7 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+
+    // =========================
     // Formulario + Google Sheets + WhatsApp
+    // =========================
     const form = document.getElementById("contactForm");
 
     if (form) {
@@ -86,7 +94,7 @@ Requerimiento:
 ${data.description}`;
 
             try {
-                // Enviar a Google Sheets usando form-urlencoded
+                // Enviar a Google Sheets
                 const formData = new URLSearchParams();
 
                 formData.append("name", data.name);
@@ -95,20 +103,23 @@ ${data.description}`;
                 formData.append("service", data.service);
                 formData.append("description", data.description);
 
-                await fetch(
-                    "https://script.google.com/macros/s/AKfycbz09DK2DOCmMuzY9d1R-8U5RLBs3xsYd2u-TnoLvJxII1TyIoeq3l-6xFvkS1CTKRS8iQ/exec",
+                const response = await fetch(
+                    "https://script.google.com/macros/s/AKfycbyG1XeySfRAPQX04ByIl899CxJdz2haw-b6KFZq4WXNaaiKpfjSpoEXvjZZSMyvhY7Y7Q/exec",
                     {
                         method: "POST",
                         body: formData
                     }
                 );
 
-                // Abrir WhatsApp después de guardar
-                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+                console.log("Formulario enviado:", response);
 
+                // Abrir WhatsApp después del envío
+                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
                 window.open(whatsappURL, "_blank");
 
                 form.reset();
+
+                alert("Formulario enviado correctamente");
 
             } catch (error) {
                 console.error("Error enviando formulario:", error);
@@ -117,7 +128,10 @@ ${data.description}`;
         });
     }
 
+
+    // =========================
     // WhatsApp Floating Button
+    // =========================
     const whatsappFloat = document.getElementById("whatsappFloat");
 
     if (whatsappFloat) {
@@ -129,7 +143,10 @@ ${data.description}`;
         });
     }
 
+
+    // =========================
     // GSAP Animations - Services
+    // =========================
     const serviceCards = document.querySelectorAll(".service-card");
 
     serviceCards.forEach(card => {
@@ -145,7 +162,10 @@ ${data.description}`;
         });
     });
 
-    // Commitment
+
+    // =========================
+    // Commitment Animation
+    // =========================
     gsap.from(".commitment__content", {
         scrollTrigger: {
             trigger: ".commitment",
@@ -167,7 +187,10 @@ ${data.description}`;
         delay: 0.2
     });
 
+
+    // =========================
     // FAQ Animation
+    // =========================
     faqItems.forEach(item => {
         gsap.from(item, {
             scrollTrigger: {
@@ -180,7 +203,10 @@ ${data.description}`;
         });
     });
 
+
+    // =========================
     // Header Scroll Effect
+    // =========================
     const header = document.querySelector(".header");
 
     window.addEventListener("scroll", () => {
