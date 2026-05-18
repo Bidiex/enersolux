@@ -138,7 +138,7 @@ ${data.description}`;
                 formData.append("description", data.description);
 
                 await fetch(
-                    "https://script.google.com/macros/s/AKfycbx2bcvTqpQu3qQFAbJyrYw3j54Hchj79slDxqBjii072jUoFr3CtPwDLV312t41vJmz/exec",
+                    "https://script.google.com/macros/s/AKfycbxP_6TbPurvS1nPbe3RhwAF7eIQT5GXwe0cgZSAjDh7GoS1Q2MmFaHHuHzK6b5cyGkumQ/exec",
                     {
                         method: "POST",
                         body: formData
