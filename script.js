@@ -12,19 +12,24 @@ document.addEventListener("DOMContentLoaded", () => {
             navMenu.classList.toggle("nav--open");
 
             const icon = navToggle.querySelector("span");
-            icon.textContent = navMenu.classList.contains("nav--open")
-                ? "close"
-                : "menu";
+            if (icon) {
+                icon.textContent = navMenu.classList.contains("nav--open")
+                    ? "close"
+                    : "menu";
+            }
         });
     }
 
     navLinks.forEach(link => {
         link.addEventListener("click", () => {
-            if (navMenu.classList.contains("nav--open")) {
+            if (navMenu && navMenu.classList.contains("nav--open")) {
                 navMenu.classList.remove("nav--open");
 
                 if (navToggle) {
-                    navToggle.querySelector("span").textContent = "menu";
+                    const icon = navToggle.querySelector("span");
+                    if (icon) {
+                        icon.textContent = "menu";
+                    }
                 }
             }
         });
@@ -63,40 +68,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================
-    // Custom Alert
+    // Modal Loader + Redirect
     // =========================
-    function showCustomAlert(message, type = "success") {
-        const existingAlert = document.querySelector(".custom-alert");
+    function showLoadingModal() {
+        const existingModal = document.querySelector(".custom-loading-modal");
 
-        if (existingAlert) {
-            existingAlert.remove();
+        if (existingModal) {
+            existingModal.remove();
         }
 
-        const alert = document.createElement("div");
-        alert.className = `custom-alert custom-alert--${type}`;
+        const modal = document.createElement("div");
+        modal.className = "custom-loading-modal";
 
-        alert.innerHTML = `
-            <div class="custom-alert__content">
-                <span class="material-symbols-outlined">
-                    ${type === "success" ? "check_circle" : "error"}
-                </span>
-                <p>${message}</p>
+        modal.innerHTML = `
+            <div class="custom-loading-modal__box">
+                <div class="custom-loading-modal__spinner"></div>
+                <h3>Formulario enviado correctamente</h3>
+                <p>Te estamos redirigiendo a WhatsApp...</p>
             </div>
         `;
 
-        document.body.appendChild(alert);
+        document.body.appendChild(modal);
 
         setTimeout(() => {
-            alert.classList.add("show");
-        }, 100);
-
-        setTimeout(() => {
-            alert.classList.remove("show");
-
-            setTimeout(() => {
-                alert.remove();
-            }, 300);
-        }, 4000);
+            modal.classList.add("show");
+        }, 50);
     }
 
 
@@ -145,23 +141,20 @@ ${data.description}`;
                     }
                 );
 
-                const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-                window.open(whatsappURL, "_blank");
-
                 form.reset();
 
-                showCustomAlert(
-                    "Formulario enviado correctamente. Te redirigimos a WhatsApp.",
-                    "success"
-                );
+                // Mostrar modal primero
+                showLoadingModal();
+
+                // Esperar 3 segundos y luego abrir WhatsApp
+                setTimeout(() => {
+                    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+                    window.open(whatsappURL, "_blank");
+                }, 3000);
 
             } catch (error) {
                 console.error("Error enviando formulario:", error);
-
-                showCustomAlert(
-                    "Ocurrió un error al enviar el formulario.",
-                    "error"
-                );
+                alert("Ocurrió un error al enviar el formulario.");
             }
         });
     }
@@ -187,59 +180,61 @@ ${data.description}`;
     // =========================
     const serviceCards = document.querySelectorAll(".service-card");
 
-    serviceCards.forEach(card => {
-        gsap.from(card, {
-            scrollTrigger: {
-                trigger: card,
-                start: "top 85%"
-            },
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            ease: "back.out(1.2)"
+    if (typeof gsap !== "undefined") {
+        serviceCards.forEach(card => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 85%"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 0.8,
+                ease: "back.out(1.2)"
+            });
         });
-    });
 
 
-    // =========================
-    // Commitment Animation
-    // =========================
-    gsap.from(".commitment__content", {
-        scrollTrigger: {
-            trigger: ".commitment",
-            start: "top 75%"
-        },
-        x: -50,
-        opacity: 0,
-        duration: 1
-    });
-
-    gsap.from(".commitment__media", {
-        scrollTrigger: {
-            trigger: ".commitment",
-            start: "top 75%"
-        },
-        x: 50,
-        opacity: 0,
-        duration: 1,
-        delay: 0.2
-    });
-
-
-    // =========================
-    // FAQ Animation
-    // =========================
-    faqItems.forEach(item => {
-        gsap.from(item, {
+        // =========================
+        // Commitment Animation
+        // =========================
+        gsap.from(".commitment__content", {
             scrollTrigger: {
-                trigger: item,
-                start: "top 90%"
+                trigger: ".commitment",
+                start: "top 75%"
             },
-            y: 20,
+            x: -50,
             opacity: 0,
-            duration: 0.5
+            duration: 1
         });
-    });
+
+        gsap.from(".commitment__media", {
+            scrollTrigger: {
+                trigger: ".commitment",
+                start: "top 75%"
+            },
+            x: 50,
+            opacity: 0,
+            duration: 1,
+            delay: 0.2
+        });
+
+
+        // =========================
+        // FAQ Animation
+        // =========================
+        faqItems.forEach(item => {
+            gsap.from(item, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top 90%"
+                },
+                y: 20,
+                opacity: 0,
+                duration: 0.5
+            });
+        });
+    }
 
 
     // =========================
@@ -247,12 +242,14 @@ ${data.description}`;
     // =========================
     const header = document.querySelector(".header");
 
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-            header.classList.add("scrolled");
-        } else {
-            header.classList.remove("scrolled");
-        }
-    });
+    if (header) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        });
+    }
 
 });
