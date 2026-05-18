@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
         item.addEventListener("click", () => {
             const icon = item.querySelector(".material-symbols-outlined");
 
-            // cerrar otros
             faqItems.forEach(otherItem => {
                 if (otherItem !== item) {
                     otherItem.classList.remove("active");
@@ -53,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
-            // toggle actual
             item.classList.toggle("active");
 
             if (icon) {
@@ -66,48 +64,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================
-    // Modal de redirección a WhatsApp
+    // Toast Alert Personalizado
     // =========================
-    function showRedirectModal(callback) {
-        const oldModal = document.querySelector(".redirect-modal");
+    function showToast(message, type = "success") {
+        const oldToast = document.querySelector(".custom-toast");
 
-        if (oldModal) {
-            oldModal.remove();
+        if (oldToast) {
+            oldToast.remove();
         }
 
-        const modal = document.createElement("div");
-        modal.className = "redirect-modal";
+        const toast = document.createElement("div");
+        toast.className = `custom-toast custom-toast--${type}`;
 
-        modal.innerHTML = `
-            <div class="redirect-modal__box">
-                <div class="redirect-modal__spinner"></div>
-
-                <h3 class="redirect-modal__title">
-                    Formulario enviado correctamente
-                </h3>
-
-                <p class="redirect-modal__text">
-                    Te estamos redirigiendo a WhatsApp...
-                </p>
+        toast.innerHTML = `
+            <div class="custom-toast__content">
+                <span class="material-symbols-outlined">
+                    ${type === "success" ? "check_circle" : "error"}
+                </span>
+                <p>${message}</p>
             </div>
         `;
 
-        document.body.appendChild(modal);
+        document.body.appendChild(toast);
 
         setTimeout(() => {
-            modal.classList.add("show");
-        }, 50);
+            toast.classList.add("show");
+        }, 100);
 
         setTimeout(() => {
-            if (callback) callback();
-
-            modal.classList.remove("show");
+            toast.classList.remove("show");
 
             setTimeout(() => {
-                modal.remove();
+                toast.remove();
             }, 400);
-
-        }, 3000);
+        }, 4000);
     }
 
 
@@ -147,7 +137,6 @@ ${data.description}`;
                     submitBtn.textContent = "Enviando...";
                 }
 
-                // Enviar a Google Sheets
                 const formData = new URLSearchParams();
 
                 formData.append("name", data.name);
@@ -165,16 +154,23 @@ ${data.description}`;
                 );
 
                 const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+                window.open(whatsappURL, "_blank");
 
                 form.reset();
 
-                showRedirectModal(() => {
-                    window.open(whatsappURL, "_blank");
-                });
+                showToast(
+                    "Formulario enviado correctamente. Te redirigimos a WhatsApp.",
+                    "success"
+                );
 
             } catch (error) {
                 console.error("Error enviando formulario:", error);
-                alert("Ocurrió un error al enviar el formulario.");
+
+                showToast(
+                    "Ocurrió un error al enviar el formulario.",
+                    "error"
+                );
+
             } finally {
                 if (submitBtn) {
                     submitBtn.disabled = false;
