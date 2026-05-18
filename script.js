@@ -41,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
         item.addEventListener("click", () => {
             const icon = item.querySelector(".material-symbols-outlined");
 
-            // cerrar otros
             faqItems.forEach(otherItem => {
                 if (otherItem !== item) {
                     otherItem.classList.remove("active");
@@ -53,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
-            // toggle actual
             item.classList.toggle("active");
 
             if (icon) {
@@ -66,6 +64,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================
+    // Toast Alert Personalizado
+    // =========================
+    function showToast(message, type = "success") {
+        const oldToast = document.querySelector(".custom-toast");
+
+        if (oldToast) {
+            oldToast.remove();
+        }
+
+        const toast = document.createElement("div");
+        toast.className = `custom-toast custom-toast--${type}`;
+
+        toast.innerHTML = `
+            <div class="custom-toast__content">
+                <span class="material-symbols-outlined">
+                    ${type === "success" ? "check_circle" : "error"}
+                </span>
+                <p>${message}</p>
+            </div>
+        `;
+
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+            toast.classList.add("show");
+        }, 100);
+
+        setTimeout(() => {
+            toast.classList.remove("show");
+
+            setTimeout(() => {
+                toast.remove();
+            }, 400);
+        }, 4000);
+    }
+
+
+    // =========================
     // Formulario + Google Sheets + WhatsApp
     // =========================
     const form = document.getElementById("contactForm");
@@ -73,6 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (form) {
         form.addEventListener("submit", async function (e) {
             e.preventDefault();
+
+            const submitBtn = form.querySelector("button[type='submit']");
 
             const data = {
                 name: document.getElementById("name").value.trim(),
@@ -94,7 +132,11 @@ Requerimiento:
 ${data.description}`;
 
             try {
-                // Enviar a Google Sheets
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = "Enviando...";
+                }
+
                 const formData = new URLSearchParams();
 
                 formData.append("name", data.name);
@@ -103,27 +145,37 @@ ${data.description}`;
                 formData.append("service", data.service);
                 formData.append("description", data.description);
 
-                const response = await fetch(
-                    "https://script.google.com/macros/s/AKfycbx2bcvTqpQu3qQFAbJyrYw3j54Hchj79slDxqBjii072jUoFr3CtPwDLV312t41vJmz/exec",
+                await fetch(
+                    "https://script.google.com/macros/s/AKfycbxP_6TbPurvS1nPbe3RhwAF7eIQT5GXwe0cgZSAjDh7GoS1Q2MmFaHHuHzK6b5cyGkumQ/exec",
                     {
                         method: "POST",
                         body: formData
                     }
                 );
 
-                console.log("Formulario enviado:", response);
-
-                // Abrir WhatsApp después del envío
                 const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
                 window.open(whatsappURL, "_blank");
 
                 form.reset();
 
-                alert("Formulario enviado correctamente");
+                showToast(
+                    "Formulario enviado correctamente. Te redirigimos a WhatsApp.",
+                    "success"
+                );
 
             } catch (error) {
                 console.error("Error enviando formulario:", error);
-                alert("Ocurrió un error al enviar el formulario.");
+
+                showToast(
+                    "Ocurrió un error al enviar el formulario.",
+                    "error"
+                );
+
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Enviar solicitud";
+                }
             }
         });
     }
@@ -209,12 +261,14 @@ ${data.description}`;
     // =========================
     const header = document.querySelector(".header");
 
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-            header.classList.add("scrolled");
-        } else {
-            header.classList.remove("scrolled");
-        }
-    });
+    if (header) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        });
+    }
 
 });
