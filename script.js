@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // =========================
-    // Mobile Menu
-    // =========================
+    /*
+    ========================================
+    MOBILE MENU
+    ========================================
+    */
     const navToggle = document.getElementById("navToggle");
     const navMenu = document.getElementById("navMenu");
     const navLinks = document.querySelectorAll(".nav__link, .nav__cta-mobile");
@@ -25,34 +27,30 @@ document.addEventListener("DOMContentLoaded", () => {
             if (navMenu && navMenu.classList.contains("nav--open")) {
                 navMenu.classList.remove("nav--open");
 
-                if (navToggle) {
-                    const icon = navToggle.querySelector("span");
-                    if (icon) {
-                        icon.textContent = "menu";
-                    }
-                }
+                const icon = navToggle?.querySelector("span");
+                if (icon) icon.textContent = "menu";
             }
         });
     });
 
 
-    // =========================
-    // FAQ Accordion
-    // =========================
+    /*
+    ========================================
+    FAQ ACCORDION
+    ========================================
+    */
     const faqItems = document.querySelectorAll(".faq__item");
 
     faqItems.forEach(item => {
         item.addEventListener("click", () => {
             const icon = item.querySelector(".material-symbols-outlined");
 
-            faqItems.forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.classList.remove("active");
+            faqItems.forEach(other => {
+                if (other !== item) {
+                    other.classList.remove("active");
 
-                    const otherIcon = otherItem.querySelector(".material-symbols-outlined");
-                    if (otherIcon) {
-                        otherIcon.textContent = "add_circle";
-                    }
+                    const otherIcon = other.querySelector(".material-symbols-outlined");
+                    if (otherIcon) otherIcon.textContent = "add_circle";
                 }
             });
 
@@ -67,15 +65,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // =========================
-    // Modal Loader + Redirect
-    // =========================
+    /*
+    ========================================
+    LOADING MODAL
+    ========================================
+    */
     function showLoadingModal() {
-        const existingModal = document.querySelector(".custom-loading-modal");
-
-        if (existingModal) {
-            existingModal.remove();
-        }
+        const old = document.querySelector(".custom-loading-modal");
+        if (old) old.remove();
 
         const modal = document.createElement("div");
         modal.className = "custom-loading-modal";
@@ -96,14 +93,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // =========================
-    // Formulario + Google Sheets + WhatsApp
-    // =========================
+    /*
+    ========================================
+    FORMULARIO + SHEETS + WHATSAPP
+    ========================================
+    */
     const form = document.getElementById("contactForm");
 
     if (form) {
         form.addEventListener("submit", async function (e) {
             e.preventDefault();
+
+            const submitBtn = form.querySelector("button[type='submit']");
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = "Enviando...";
+            }
 
             const data = {
                 name: document.getElementById("name").value.trim(),
@@ -112,6 +117,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 service: document.getElementById("service").value,
                 description: document.getElementById("description").value.trim()
             };
+
+            const scriptURL = "https://script.google.com/macros/s/AKfycbxcTQPy_rrzA6wORppoe2M2c7esXijmexZP9a3rDNV3aEE4r6KxTnUYDCPfGX-OLNaY/exec";
 
             const whatsappNumber = "573123174919";
 
@@ -125,7 +132,7 @@ Requerimiento:
 ${data.description}`;
 
             try {
-                const formData = new URLSearchParams();
+                const formData = new FormData();
 
                 formData.append("name", data.name);
                 formData.append("phone", data.phone);
@@ -133,40 +140,46 @@ ${data.description}`;
                 formData.append("service", data.service);
                 formData.append("description", data.description);
 
-                await fetch(
-                    "https://script.google.com/macros/s/AKfycbxcTQPy_rrzA6wORppoe2M2c7esXijmexZP9a3rDNV3aEE4r6KxTnUYDCPfGX-OLNaY/exec",
-                    {
-                        method: "POST",
-                        body: formData
-                    }
-                );
+                const response = await fetch(scriptURL, {
+                    method: "POST",
+                    body: formData,
+                    mode: "no-cors"
+                });
+
+                console.log("Formulario enviado:", response);
 
                 form.reset();
 
-                // Mostrar modal primero
                 showLoadingModal();
 
-                // Esperar 3 segundos y luego abrir WhatsApp
                 setTimeout(() => {
                     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
                     window.open(whatsappURL, "_blank");
-                }, 3000);
+                }, 2500);
 
             } catch (error) {
-                console.error("Error enviando formulario:", error);
-                alert("Ocurrió un error al enviar el formulario.");
+                console.error("ERROR REAL:", error);
+                alert("Error enviando formulario. Revisa consola.");
+
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = "Enviar Mensaje";
+                }
             }
         });
     }
 
 
-    // =========================
-    // WhatsApp Floating Button
-    // =========================
+    /*
+    ========================================
+    WHATSAPP FLOAT
+    ========================================
+    */
     const whatsappFloat = document.getElementById("whatsappFloat");
 
     if (whatsappFloat) {
-        whatsappFloat.addEventListener("click", function () {
+        whatsappFloat.addEventListener("click", () => {
             window.open(
                 "https://wa.me/573123174919?text=Hola",
                 "_blank"
@@ -175,13 +188,14 @@ ${data.description}`;
     }
 
 
-    // =========================
-    // GSAP Animations - Services
-    // =========================
-    const serviceCards = document.querySelectorAll(".service-card");
-
+    /*
+    ========================================
+    GSAP
+    ========================================
+    */
     if (typeof gsap !== "undefined") {
-        serviceCards.forEach(card => {
+
+        document.querySelectorAll(".service-card").forEach(card => {
             gsap.from(card, {
                 scrollTrigger: {
                     trigger: card,
@@ -194,10 +208,6 @@ ${data.description}`;
             });
         });
 
-
-        // =========================
-        // Commitment Animation
-        // =========================
         gsap.from(".commitment__content", {
             scrollTrigger: {
                 trigger: ".commitment",
@@ -208,21 +218,6 @@ ${data.description}`;
             duration: 1
         });
 
-        gsap.from(".commitment__media", {
-            scrollTrigger: {
-                trigger: ".commitment",
-                start: "top 75%"
-            },
-            x: 50,
-            opacity: 0,
-            duration: 1,
-            delay: 0.2
-        });
-
-
-        // =========================
-        // FAQ Animation
-        // =========================
         faqItems.forEach(item => {
             gsap.from(item, {
                 scrollTrigger: {
@@ -237,18 +232,16 @@ ${data.description}`;
     }
 
 
-    // =========================
-    // Header Scroll Effect
-    // =========================
+    /*
+    ========================================
+    HEADER SCROLL
+    ========================================
+    */
     const header = document.querySelector(".header");
 
     if (header) {
         window.addEventListener("scroll", () => {
-            if (window.scrollY > 50) {
-                header.classList.add("scrolled");
-            } else {
-                header.classList.remove("scrolled");
-            }
+            header.classList.toggle("scrolled", window.scrollY > 50);
         });
     }
 
