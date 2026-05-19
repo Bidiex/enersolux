@@ -1381,3 +1381,51 @@ textarea.form__input {
         transform: rotate(360deg);
     }
 }
+
+.loading-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(1, 51, 52, 0.85);
+    backdrop-filter: blur(6px);
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-overlay.visible {
+    display: flex;
+}
+
+.loading-overlay__box {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    font-family: var(--font-family);
+}
+
+.loading-overlay__box h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--secondary);
+    margin-bottom: 0.75rem;
+}
+
+.loading-overlay__box p {
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    line-height: 1.5;
+}
+
+.loading-overlay__spinner {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.5rem;
+    border: 5px solid rgba(2, 215, 129, 0.2);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: loadingSpin 0.8s linear infinite;
+}
