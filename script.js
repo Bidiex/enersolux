@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 description: document.getElementById("description").value.trim()
             };
 
-            const scriptURL = "https://script.google.com/macros/s/AKfycbxcTQPy_rrzA6wORppoe2M2c7esXijmexZP9a3rDNV3aEE4r6KxTnUYDCPfGX-OLNaY/exec";
+            const scriptURL = "https://script.google.com/macros/s/AKfycbxfDbPXyjsJCk1e-wdNbhbA3ksHytGNEkEtLZQ_f1yEDjwHXeyLnELAdnOOb0lV6sO3/exec";
 
             const whatsappNumber = "573123174919";
 
