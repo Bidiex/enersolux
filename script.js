@@ -105,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
 
             const submitBtn = form.querySelector("button[type='submit']");
+
             if (submitBtn) {
                 submitBtn.disabled = true;
                 submitBtn.textContent = "Enviando...";
@@ -132,21 +133,38 @@ Requerimiento:
 ${data.description}`;
 
             try {
-                const formData = new FormData();
+                /*
+                ========================================
+                CAMBIO IMPORTANTE:
+                NO usar FormData
+                NO usar mode: "no-cors"
+                usar URLSearchParams
+                ========================================
+                */
 
-                formData.append("name", data.name);
-                formData.append("phone", data.phone);
-                formData.append("email", data.email);
-                formData.append("service", data.service);
-                formData.append("description", data.description);
+                const body = new URLSearchParams({
+                    name: data.name,
+                    phone: data.phone,
+                    email: data.email,
+                    service: data.service,
+                    description: data.description
+                });
 
                 const response = await fetch(scriptURL, {
                     method: "POST",
-                    body: formData,
-                    mode: "no-cors"
+                    body: body,
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    }
                 });
 
-                console.log("Formulario enviado:", response);
+                const result = await response.json();
+
+                console.log("Respuesta Apps Script:", result);
+
+                if (!result.success) {
+                    throw new Error(result.error || "No se pudo guardar en Sheets");
+                }
 
                 form.reset();
 
