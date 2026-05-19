@@ -71,26 +71,33 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================
     */
     function showLoadingModal() {
-        const old = document.querySelector(".custom-loading-modal");
-        if (old) old.remove();
+    const old = document.querySelector(".custom-loading-modal");
+    if (old) old.remove();
 
-        const modal = document.createElement("div");
-        modal.className = "custom-loading-modal";
+    const modal = document.createElement("div");
+    modal.className = "custom-loading-modal";
 
-        modal.innerHTML = `
+    modal.innerHTML = `
+        <div class="custom-loading-modal__overlay">
             <div class="custom-loading-modal__box">
                 <div class="custom-loading-modal__spinner"></div>
                 <h3>Formulario enviado correctamente</h3>
                 <p>Te estamos redirigiendo a WhatsApp...</p>
             </div>
-        `;
+        </div>
+    `;
 
-        document.body.appendChild(modal);
+    document.body.appendChild(modal);
 
-        setTimeout(() => {
+    /*
+    Forzar render real antes del redirect
+    */
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
             modal.classList.add("show");
-        }, 50);
-    }
+        });
+    });
+}
 
 
     /*
@@ -170,10 +177,10 @@ ${data.description}`;
 
                 showLoadingModal();
 
-                setTimeout(() => {
-                    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-                    window.open(whatsappURL, "_blank");
-                }, 2500);
+setTimeout(() => {
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+    window.location.href = whatsappURL;
+}, 3000);
 
             } catch (error) {
                 console.error("ERROR REAL:", error);
