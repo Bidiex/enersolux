@@ -1305,3 +1305,79 @@ textarea.form__input {
         max-width: none;
     }
 }
+
+/* =========================
+   LOADING MODAL
+========================= */
+
+.custom-loading-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.custom-loading-modal.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.custom-loading-modal__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(1, 51, 52, 0.75);
+    backdrop-filter: blur(6px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.custom-loading-modal__box {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.custom-loading-modal.show .custom-loading-modal__box {
+    transform: translateY(0);
+}
+
+.custom-loading-modal__box h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--secondary);
+    margin-bottom: 0.75rem;
+}
+
+.custom-loading-modal__box p {
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    line-height: 1.5;
+}
+
+.custom-loading-modal__spinner {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.5rem auto;
+    border: 5px solid rgba(2, 215, 129, 0.2);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: loadingSpin 0.8s linear infinite;
+}
+
+@keyframes loadingSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
